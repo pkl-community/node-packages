@@ -1,0 +1,36 @@
+{
+  "name": "@pkl-community/pkl",
+  "description": "The pkl CLI",
+  "version": "0.25.1",
+  "bin": "lib/main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pkl-community/node-packages.git"
+  },
+  "publishConfig": {
+    "@pkl-community:registry": "https://registry.npmjs.org"
+  },
+  "author": "Pkl community Developers",
+  "license": "Apache",
+  "homepage": "https://github.com/pkl-community/pkl#readme",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "build": "tsc",
+    "dev": "npm run build && node lib/index.js"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "@typescript-eslint/eslint-plugin": "^5.48.0",
+    "@typescript-eslint/parser": "^5.48.0",
+    "eslint": "^8.31.0",
+    "typescript": "^4.9.4"
+  },
+  "optionalDependencies": {
+    "@pkl-community/pkl-linux-x64": "0.25.1",
+    "@pkl-community/pkl-linux-arm64": "0.25.1",
+    "@pkl-community/pkl-darwin-x64": "0.25.1",
+    "@pkl-community/pkl-darwin-arm64": "0.25.1"
+  }
+}
