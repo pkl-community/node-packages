@@ -39,13 +39,13 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: Download binary from pkl releases
-        run: curl -Lo pkl https://github.com/apple/pkl/releases/download/${{ inputs.version }}/pkl-${{ matrix.build.target }}
+        run: curl -Lo binaries/pkl https://github.com/apple/pkl/releases/download/${{ inputs.version }}/pkl-${{ matrix.build.target }}
 
       - name: Download NOTICE.txt
-        run: curl -Lo NOTICE.txt https://raw.githubusercontent.com/apple/pkl/${{ inputs.version }}/NOTICE.txt
+        run: curl -Lo binaries/NOTICE.txt https://raw.githubusercontent.com/apple/pkl/${{ inputs.version }}/NOTICE.txt
 
       - name: Download LICENSE.txt
-        run: curl -Lo LICENSE.txt https://raw.githubusercontent.com/apple/pkl/${{ inputs.version }}/LICENSE.txt
+        run: curl -Lo binaries/LICENSE.txt https://raw.githubusercontent.com/apple/pkl/${{ inputs.version }}/LICENSE.txt
 
       - name: Publish to NPM
         shell: bash
@@ -80,9 +80,9 @@ jobs:
           envsubst < package.json.tmpl > "${node_pkg}/package.json"
 
           # copy the binary into the package
-          cp "../pkl" "${node_pkg}/bin"
-          cp ../NOTICE.txt "${node_pkg}"
-          cp ../LICENSE.txt "${node_pkg}"
+          cp "pkl" "${node_pkg}/bin"
+          cp NOTICE.txt "${node_pkg}"
+          cp LICENSE.txt "${node_pkg}"
           cp ../README.md "${node_pkg}"
 
           # publish the package
