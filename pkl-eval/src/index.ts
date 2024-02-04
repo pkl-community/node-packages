@@ -41,7 +41,7 @@ export async function evaluate(mod: string, opts?: Options): Promise<string> {
 
   const process = execFile(getExePath(), args, {
     env: {},
-    timeout: opts?.timeout ? (opts?.timeout * 1000) + 100 : undefined,
+    timeout: opts?.timeout ? (opts?.timeout * 1000) + 100 : 0,
   }, (err, stdout, stderr) => {
     if (err !== null) {
       reject(new Error(`pkl failed with error ${err} and stderr:\n ${stderr}`));
