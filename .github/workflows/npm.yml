@@ -39,13 +39,13 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: Download binary from pkl releases
-        run: curl -Lo binaries/pkl https://github.com/apple/pkl/releases/download/${{ inputs.version }}/pkl-${{ matrix.build.target }}
+        run: curl --fail -Lo binaries/pkl https://github.com/apple/pkl/releases/download/${{ inputs.version }}/pkl-${{ matrix.build.target }}
 
       - name: Download NOTICE.txt
-        run: curl -Lo binaries/NOTICE.txt https://raw.githubusercontent.com/apple/pkl/${{ inputs.version }}/NOTICE.txt
+        run: curl --fail -Lo binaries/NOTICE.txt https://raw.githubusercontent.com/apple/pkl/${{ inputs.version }}/NOTICE.txt
 
       - name: Download LICENSE.txt
-        run: curl -Lo binaries/LICENSE.txt https://raw.githubusercontent.com/apple/pkl/${{ inputs.version }}/LICENSE.txt
+        run: curl --fail -Lo binaries/LICENSE.txt https://raw.githubusercontent.com/apple/pkl/${{ inputs.version }}/LICENSE.txt
 
       - name: Publish to NPM
         shell: bash
@@ -129,6 +129,5 @@ jobs:
           npm install
           npm run build
           npm publish --access public
-          popd
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
