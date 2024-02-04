@@ -1,6 +1,6 @@
 # pkl-eval
 
-A very simple library that wraps the `pcl eval` command to interpret a fixed string as a Pkl module.
+A very simple library that wraps the `pkl eval` command to interpret a fixed string as a Pkl module.
 A stopgap until we have Typescript bindings.
 
 Supported flags:
