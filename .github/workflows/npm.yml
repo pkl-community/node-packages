@@ -116,7 +116,7 @@ jobs:
           then
             continue
           fi
-          pushd "pkl"
+          
           sed -i "s/\"version\": \".*\",/\"version\": \"${node_version}\",/" package.json
           for os in linux darwin
           do
