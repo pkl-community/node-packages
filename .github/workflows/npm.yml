@@ -39,7 +39,9 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: Download binary from pkl releases
-        run: curl --fail -Lo binaries/pkl https://github.com/apple/pkl/releases/download/${{ inputs.version }}/pkl-${{ matrix.build.target }}
+        run: |
+          curl --fail -Lo binaries/pkl https://github.com/apple/pkl/releases/download/${{ inputs.version }}/pkl-${{ matrix.build.target }}
+          chmod +x binaries/pkl
 
       - name: Download NOTICE.txt
         run: curl --fail -Lo binaries/NOTICE.txt https://raw.githubusercontent.com/apple/pkl/${{ inputs.version }}/NOTICE.txt
