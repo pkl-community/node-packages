@@ -7,6 +7,11 @@ on:
         description: 'pkl release tag'
         required: true
         type: string
+      versionSuffix:
+        description: 'suffix for npm version, eg -1'
+        required: false
+        default: ''
+        type: string
 
 jobs:
   publish-npm-binaries:
@@ -63,7 +68,7 @@ jobs:
           export node_arch
           
           # set the version
-          node_version="${{ inputs.version }}"
+          node_version="${{ inputs.version }}${{ inputs.versionSuffix }}"
           node_version="${node_version#v}"
           export node_version
           
@@ -109,7 +114,7 @@ jobs:
       - name: Publish to npm
         shell: bash
         run: |
-          node_version="${{ inputs.version }}"
+          node_version="${{ inputs.version }}${{ inputs.versionSuffix }}"
           node_version="${node_version#v}"
           
           cd pkl
