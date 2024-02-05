@@ -7,6 +7,7 @@ export type Options = {
   allowedResources?: string[],
   timeout?: number,
   expression?: string,
+  cache?: { enabled: false } | { enabled: true, directory?: string }
 }
 
 export async function evaluate(mod: string, opts?: Options): Promise<string> {
@@ -30,6 +31,12 @@ export async function evaluate(mod: string, opts?: Options): Promise<string> {
 
   if (opts?.expression) {
     args.push("--expression", opts.expression)
+  }
+
+  if (opts?.cache?.enabled === false) {
+    args.push("--no-cache")
+  } else if (opts?.cache?.enabled && opts.cache.directory) {
+    args.push("--cache-dir", opts.cache.directory)
   }
 
   let resolve: (value: PromiseLike<string> | string) => void;
