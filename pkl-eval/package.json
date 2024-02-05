@@ -1,7 +1,7 @@
 {
   "name": "@pkl-community/pkl-eval",
   "description": "A library wrapper for the Pkl CLI",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "lib/index.js",
   "repository": {
     "type": "git",
