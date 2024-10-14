@@ -22,7 +22,7 @@
     "dev": "npm run build && node lib/index.js"
   },
   "devDependencies": {
-    "@types/node": "^18.11.18",
+    "@types/node": "^22.7.5",
     "@typescript-eslint/eslint-plugin": "^8.8.1",
     "@typescript-eslint/parser": "^5.48.0",
     "eslint": "^9.12.0",
