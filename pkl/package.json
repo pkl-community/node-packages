@@ -32,6 +32,6 @@
     "@pkl-community/pkl-linux-x64": "0.25.1",
     "@pkl-community/pkl-linux-arm64": "0.27.2",
     "@pkl-community/pkl-darwin-x64": "0.25.1",
-    "@pkl-community/pkl-darwin-arm64": "0.25.1"
+    "@pkl-community/pkl-darwin-arm64": "0.27.2"
   }
 }
