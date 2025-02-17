@@ -20,7 +20,7 @@
     "build": "tsc --declaration"
   },
   "dependencies": {
-    "@pkl-community/pkl": "0.25.1-2"
+    "@pkl-community/pkl": "0.27.2"
   },
   "devDependencies": {
     "@types/node": "^22.7.5",
