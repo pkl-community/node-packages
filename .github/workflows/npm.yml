@@ -17,6 +17,7 @@ jobs:
   publish-npm-binaries:
     permissions:
       contents: read
+      id-token: write
       packages: read
     runs-on: ubuntu-latest
     strategy:
@@ -101,6 +102,10 @@ jobs:
 
   publish-npm-base:
     needs: publish-npm-binaries
+    permissions:
+      contents: read
+      id-token: write
+      packages: read
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
