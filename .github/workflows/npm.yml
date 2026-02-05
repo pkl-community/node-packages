@@ -4,13 +4,13 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'pkl release tag'
+        description: "pkl release tag"
         required: true
         type: string
       versionSuffix:
-        description: 'suffix for npm version, eg -1'
+        description: "suffix for npm version, eg -1"
         required: false
-        default: ''
+        default: ""
         type: string
 
 jobs:
@@ -40,8 +40,8 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: "18.x"
-          registry-url: 'https://registry.npmjs.org'
+          node-version: "24"
+          registry-url: "https://registry.npmjs.org"
 
       - name: Download binary from pkl releases
         run: |
@@ -58,29 +58,29 @@ jobs:
         shell: bash
         run: |
           cd binaries
-          
+
           # set the os
           node_os="${{ matrix.build.node_os }}"
           export node_os
-          
+
           # set the arch
           export node_arch="${{ matrix.build.node_arch }}"
           export node_arch
-          
+
           # set the version
           node_version="${{ inputs.version }}${{ inputs.versionSuffix }}"
           node_version="${node_version#v}"
           export node_version
-          
+
           # set the package name
           export node_pkg="pkl-${node_os}-${node_arch}"
-          
+
           # skip if exists
           if npm view "@pkl-community/${node_pkg}@${node_version}"
           then
             exit 0
           fi
-          
+
           # create the package directory
           mkdir -p "${node_pkg}/bin"
           # generate package.json from the template
@@ -97,7 +97,7 @@ jobs:
           npm publish --access public
           popd
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ""
 
   publish-npm-base:
     needs: publish-npm-binaries
@@ -108,22 +108,22 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: "18.x"
-          registry-url: 'https://registry.npmjs.org'
+          node-version: "24"
+          registry-url: "https://registry.npmjs.org"
 
       - name: Publish to npm
         shell: bash
         run: |
           node_version="${{ inputs.version }}${{ inputs.versionSuffix }}"
           node_version="${node_version#v}"
-          
+
           cd pkl
-          
+
           if npm view "@pkl-community/pkl@${node_version}"
           then
             continue
           fi
-          
+
           sed -i "s/\"version\": \".*\",/\"version\": \"${node_version}\",/" package.json
           for os in linux darwin
           do
@@ -137,4 +137,4 @@ jobs:
           npm run build
           npm publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ""
