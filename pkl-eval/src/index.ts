@@ -22,7 +22,7 @@ export async function evaluate(mod: string, opts?: Options): Promise<string> {
   }
 
   if (opts?.allowedResources) {
-    args.push("--allowed-modules", opts.allowedResources.join(","))
+    args.push("--allowed-resources", opts.allowedResources.join(","))
   }
 
   if (opts?.timeout && opts.timeout > 0) {
