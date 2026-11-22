@@ -4,6 +4,7 @@
   "version": "0.25.1",
   "bin": "lib/main.js",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pkl-community/node-packages.git"
